@@ -66,6 +66,8 @@ def map_reduce(text, search_words=None):
 def visualize_top_words(word_counts, top_n=10):
     most_common = sorted(word_counts.items(),
                          key=lambda item: item[1], reverse=True)[:top_n]
+    print("Top 10 most frequent words:")
+    print(dict(most_common))
     words, counts = zip(*most_common)
 
     plt.figure(figsize=(10, 5))
@@ -73,7 +75,7 @@ def visualize_top_words(word_counts, top_n=10):
     plt.xlabel('Frequency')
     plt.ylabel('Words')
     plt.title(f'Top {top_n} Most Frequent Words')
-    plt.gca().invert_yaxis()  # Інвертувати вісь Y для більш зручного вигляду (зверху вниз)
+    plt.gca().invert_yaxis()
     plt.show()
 
 
@@ -85,8 +87,6 @@ if __name__ == '__main__':
         # Виконання MapReduce на вхідному тексті
         search_words = None  # Якщо None, враховувати всі слова
         result = map_reduce(text, search_words)
-
-        print("Result count:", result)
 
         # Візуалізація топ-10 слів за частотою
         visualize_top_words(result, top_n=10)
