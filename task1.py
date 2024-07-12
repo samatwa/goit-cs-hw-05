@@ -1,7 +1,6 @@
 import argparse
 import asyncio
 from aiopath import AsyncPath
-import aioshutil
 import logging
 from aiofile import async_open
 
